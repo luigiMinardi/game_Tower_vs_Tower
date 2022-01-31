@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <section id="screen1" onclick="changeScreen(2)">
+        <div class="canvas1"></div>
+    </section>
+
+    <section id="screen2" style="display: none;" onclick="playGame(3)">
+        <div class="canvas2"></div>
+    </section>
+
+    <section id="screen3" style="display: none;" onclick="changeScreen(1)">
+        <div class="canvas3"></div>
+    </section>
+
+    <script src="js/spawns.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

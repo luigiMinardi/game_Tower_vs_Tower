@@ -1,0 +1,24 @@
+home {
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.canvas1, .canvas2, .canvas3 {
+    height: 100vh;
+    width: 100vw;
+}
+
+.canvas1 {
+    background-color: black;
+}
+
+.canvas2 {
+    background-color: blue;
+}
+
+.canvas3 {
+    background-color: brown;
+}
