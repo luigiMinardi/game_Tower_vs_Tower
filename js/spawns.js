@@ -39,32 +39,27 @@ class Spawnable {
 let numberOfMobsSpawned = 0
 let arrayOfMobsSpawned = []
 let spawn = (name, hp, atk, color) => {
-    let id = name + numberOfMobsSpawned
-    let spawned = new Spawnable(name, hp, atk, color, id);
-    arrayOfMobsSpawned.push(spawned)
+    let id = name + numberOfMobsSpawned //create mob (html div) id
+    let spawned = new Spawnable(name, hp, atk, color, id); //instance of object spawnable
+    arrayOfMobsSpawned.push(spawned) //adding mob to the array of mobs
     console.log(arrayOfMobsSpawned)
-    let minion = document.createElement("div")
+    let minion = document.createElement("div") //creating the html element
 
-    minion.style.width = spawned.width;
-    minion.style.height = spawned.height;
-    minion.style.backgroundColor = spawned.sprite;
-    minion.style.position = "absolute";
-    minion.style.left = "5em"
-    minion.style.bottom = "5em"
-    minion.id = spawned.id
+    minion.style = `
+        width: ${spawned.width};
+        height: ${spawned.height};
+        background-color: ${spawned.sprite};
+        position: absolute;
+        left: 5em;
+        bottom: 5em;
+    ` // setting style
+    minion.id = spawned.id //putting the id in the html
 
-    numberOfMobsSpawned++
+    numberOfMobsSpawned++ //increasing the id number
 
-    let game = document.getElementById("game");
-    game.appendChild(minion);
+    let game = document.getElementById("game"); //selecting the "canvas"
+    game.appendChild(minion); //adding mob in game
 }
 
 spawn("Junin", 100, 5, "black")
 arrayOfMobsSpawned[0].walk(6)
-
-// async function spawnMob() {
-//     await test.spawn();
-//     await test.walk("Junin0", 4)
-// }
-
-// spawnMob()
