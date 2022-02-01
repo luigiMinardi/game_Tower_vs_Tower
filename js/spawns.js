@@ -25,8 +25,8 @@ class Spawnable {
         }
     }
 
-    walk(id, x) {
-        let elementToMove = document.getElementById(id)
+    walk(x) {
+        let elementToMove = document.getElementById(this.id)
         console.log(this.x)
         this.x = parseInt(this.x.replace("em", "")) + x + "em";
         elementToMove.style.left = this.x
@@ -37,9 +37,12 @@ class Spawnable {
 // new Spawnable("Junin", 100, 5, "white", "Junin1");
 
 let numberOfMobsSpawned = 0
+let arrayOfMobsSpawned = []
 let spawn = (name, hp, atk, color) => {
     let id = name + numberOfMobsSpawned
     let spawned = new Spawnable(name, hp, atk, color, id);
+    arrayOfMobsSpawned.push(spawned)
+    console.log(arrayOfMobsSpawned)
     let minion = document.createElement("div")
 
     minion.style.width = spawned.width;
@@ -57,6 +60,7 @@ let spawn = (name, hp, atk, color) => {
 }
 
 spawn("Junin", 100, 5, "black")
+arrayOfMobsSpawned[0].walk(6)
 
 // async function spawnMob() {
 //     await test.spawn();
