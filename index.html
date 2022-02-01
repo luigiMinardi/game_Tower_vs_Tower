@@ -17,7 +17,7 @@
 
     <section id="screen2" style="display: block;">
         <div class="canvas2" id="game">
-            <button onclick="spawn('Junao', 100, 5, 'white')">Spawn</button>
+            <button onclick="spawn('Junao', 100, 5, 'white', 10)">Spawn</button>
             <button onclick="objectOfMobsSpawned['Junao1'].walk(1)">Walk</button>
             <button onclick="objectOfMobsSpawned['Junao1'].attack(objectOfMobsSpawned['Junin0'])">Attack</button>
         </div>
@@ -27,6 +27,8 @@
         <div class="canvas3"></div>
     </section> -->
 
+    <script src="js/mob.js"></script>
+    <script src="js/enemies.js"></script>
     <script src="js/spawns.js"></script>
     <script src="js/main.js"></script>
 </body>
