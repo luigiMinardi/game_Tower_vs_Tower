@@ -37,12 +37,12 @@ class Spawnable {
 // new Spawnable("Junin", 100, 5, "white", "Junin1");
 
 let numberOfMobsSpawned = 0
-let arrayOfMobsSpawned = []
+let objectOfMobsSpawned = {}
 let spawn = (name, hp, atk, color) => {
     let id = name + numberOfMobsSpawned //create mob (html div) id
     let spawned = new Spawnable(name, hp, atk, color, id); //instance of object spawnable
-    arrayOfMobsSpawned.push(spawned) //adding mob to the array of mobs
-    console.log(arrayOfMobsSpawned)
+    objectOfMobsSpawned[id] = spawned //adding mob to the object of mobs
+    console.log(objectOfMobsSpawned)
     let minion = document.createElement("div") //creating the html element
 
     minion.style = `
@@ -62,4 +62,4 @@ let spawn = (name, hp, atk, color) => {
 }
 
 spawn("Junin", 100, 5, "black")
-arrayOfMobsSpawned[0].walk(6)
+objectOfMobsSpawned["Junin0"].walk(6)
