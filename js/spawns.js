@@ -1,5 +1,5 @@
 class Spawnable {
-    constructor(name, hp, atk, sprite) {
+    constructor(name, hp, atk, sprite, id) {
         this.name = name;
         this.hp = hp;
         this.atk = atk;
@@ -10,7 +10,7 @@ class Spawnable {
         this.width = "3em";
         this.height = "3em";
 
-        this.idCounter = 0
+        this.id = id
     }
 
     attack(opponent) {
@@ -32,29 +32,35 @@ class Spawnable {
         elementToMove.style.left = this.x
         console.log(elementToMove.style.left)
     }
-
-    spawn() {
-        let minion = document.createElement("div")
-        minion.style.width = this.width;
-        minion.style.height = this.height;
-        minion.style.backgroundColor = this.sprite;
-        minion.style.position = "absolute";
-        minion.style.left = "5em"
-        minion.style.bottom = "5em"
-        minion.id = this.name + this.idCounter
-        this.idCounter++
-        let game = document.getElementById("game");
-        game.appendChild(minion);
-    }
 }
 
-let test = new Spawnable("Junin", 100, 5, "white");
-let test2 = new Spawnable("Junao", 100, 15, "green")
+// new Spawnable("Junin", 100, 5, "white", "Junin1");
 
+let numberOfMobsSpawned = 0
+let spawn = (name, hp, atk, color) => {
+    let id = name + numberOfMobsSpawned
+    let spawned = new Spawnable(name, hp, atk, color, id);
+    let minion = document.createElement("div")
 
-async function spawnMob() {
-    await test.spawn();
-    await test.walk("Junin0", 4)
+    minion.style.width = spawned.width;
+    minion.style.height = spawned.height;
+    minion.style.backgroundColor = spawned.sprite;
+    minion.style.position = "absolute";
+    minion.style.left = "5em"
+    minion.style.bottom = "5em"
+    minion.id = spawned.id
+
+    numberOfMobsSpawned++
+
+    let game = document.getElementById("game");
+    game.appendChild(minion);
 }
 
-spawnMob()
+spawn("Junin", 100, 5, "black")
+
+// async function spawnMob() {
+//     await test.spawn();
+//     await test.walk("Junin0", 4)
+// }
+
+// spawnMob()
