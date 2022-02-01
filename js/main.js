@@ -11,3 +11,8 @@ let changeScreen = (screenNumber) => {
         document.getElementById(screen).style.display = "none";
     }
 }
+
+let playGame = (screenNumber) => {
+    
+    changeScreen(screenNumber)
+}

@@ -1,4 +1,4 @@
-home {
+body {
     margin: 0;
     padding: 0;
 
@@ -17,6 +17,8 @@ home {
 
 .canvas2 {
     background-color: blue;
+    display: flex;
+    align-items: center;
 }
 
 .canvas3 {
