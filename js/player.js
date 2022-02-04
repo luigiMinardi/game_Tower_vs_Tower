@@ -45,7 +45,6 @@ class Player {
             console.log("You don't have enought mana to upgrade the mana generator");
         }
         console.log(this.manaGeneratorLevel, "mana gen, upgrd");
-        console.log(this.maxMana, "max mana, upgrd");
         console.log(this.manaGeranationRate, "gen rate, upgrd");
     }
 
@@ -54,6 +53,5 @@ class Player {
             this.mana += this.manaGeranationRate;
             this.manaCounter.innerText = `Mana: ${this.mana}/${this.maxMana}`;
         }
-        console.log(this.mana, "mana");
     }
 }

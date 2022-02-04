@@ -15,8 +15,7 @@ body {
     background-color: black;
 }
 
-.canvas2 {
-    background-color: blue;
+.canvas2 {    background-color: blue;
     display: flex;
     align-items: center;
 }
@@ -32,4 +31,21 @@ body {
 .data p {
     margin-left: 1em;
     font-size: xx-large;
+}
+
+#towerAlly, #towerEnemy {
+    height: 10em;
+    width: 5em;
+    position: absolute;
+    bottom: 5em;
+}
+
+#towerAlly {
+    background-color: yellow;
+    left: 1em;
+}
+
+#towerEnemy {
+    background-color: pink;
+    right: 1em;
 }

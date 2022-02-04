@@ -60,8 +60,12 @@ spawn("Junin", 100, 5, "black", "enemy");
 objectOfMobsSpawned["Junin0"].walk(6);
 
 let p1 = new Player()
+let allyTower = new Tower('yellow', 'towerAlly')
+let enemyTower = new Tower('pink', 'towerEnemy')
 
 let playGame = (screenNumber) => {
 
-    changeScreen(screenNumber);
+    while (allyTower.hp > 0 && enemyTower.hp > 0) {
+        enemyTower.towerHitted(1)
+    }
 }
