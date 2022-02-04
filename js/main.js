@@ -1,3 +1,4 @@
+// Change Screen
 let changeScreen = (screenNumber) => {
 
     let newScreen = "screen" + screenNumber;
@@ -12,6 +13,7 @@ let changeScreen = (screenNumber) => {
     }
 }
 
+// Spawn mobs
 let numberOfMobsSpawned = 0;
 let objectOfMobsSpawned = {};
 let spawn = (name, hp, atk, sprite, type) => {
@@ -56,6 +58,8 @@ let spawn = (name, hp, atk, sprite, type) => {
 
 spawn("Junin", 100, 5, "black", "enemy");
 objectOfMobsSpawned["Junin0"].walk(6);
+
+let p1 = new Player()
 
 let playGame = (screenNumber) => {
 

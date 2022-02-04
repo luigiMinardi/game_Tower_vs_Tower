@@ -17,10 +17,15 @@
 
     <section id="screen2" style="display: block;">
         <div class="canvas2" id="game">
+            <div class="data">
+                <p id="manaCounter" >Mana:</p>
+            </div>
             <button onclick="spawn('Junao', 100, 5, 'white', 'spawn')">Spawn</button>
             <button onclick="objectOfMobsSpawned['Junao1'].walk(1)">Walk</button>
             <button onclick="objectOfMobsSpawned['Junao1'].attack(objectOfMobsSpawned['Junin0'])">Attack</button>
             <button onclick="objectOfMobsSpawned['Junin0'].attack(objectOfMobsSpawned['Junao1'])">Enemy Attack</button>
+            <button onclick="p1.generateMana()">Gen Mana</button>
+            <button onclick="p1.upgradeManaGenerator()">Up Mana</button>
         </div>
     </section>
 
@@ -31,6 +36,7 @@
     <script src="js/mob.js"></script>
     <script src="js/enemies.js"></script>
     <script src="js/spawns.js"></script>
+    <script src="js/player.js"></script>
     <script src="js/main.js"></script>
 </body>
 

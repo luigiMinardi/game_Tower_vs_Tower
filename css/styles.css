@@ -24,3 +24,12 @@ body {
 .canvas3 {
     background-color: brown;
 }
+
+.data {
+    align-self: flex-start;
+}
+
+.data p {
+    margin-left: 1em;
+    font-size: xx-large;
+}
