@@ -3,9 +3,9 @@ class Enemy extends Mob {
         super(name, hp, atk, sprite, id);
     }
 
-    walk(x) {
+    walk() {
         let elementToMove = document.getElementById(this.id);
-        this.x = this.addEm(this.x, x);
+        this.x = this.addEm(this.x, this.velocity);
         elementToMove.style.right = this.x;
         console.log(elementToMove.style.right);
     }

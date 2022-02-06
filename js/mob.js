@@ -12,6 +12,8 @@ class Mob {
 
         this.width = "3em";
         this.height = "3em";
+
+        this.velocity = 0.3;
     }
 
     addEm(position, em) {
@@ -57,9 +59,9 @@ class Mob {
         }
     }
 
-    walk(x) {
+    walk() {
         let elementToMove = document.getElementById(this.id);
-        this.x = this.addEm(this.x, x);
+        this.x = this.addEm(this.x, this.velocity);
         elementToMove.style.left = this.x;
         console.log(elementToMove.style.left);
     }
