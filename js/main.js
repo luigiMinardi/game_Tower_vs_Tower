@@ -83,9 +83,10 @@ let restart = () => {
     objectOfAlliesSpawned = {};
     objectOfEnemiesSpawned = {};
     p1.mana = 0;
-    p1.updateCounter()
+    p1.maxMana = 100;
     p1.manaGeneratorLevel = 1;
     p1.manaGeranationRate = 1;
+    p1.updateCounter();
 }
 
 let playGame = (screenNumber = 2) => {
