@@ -70,15 +70,22 @@ let playGame = (screenNumber = 2) => {
     let spawnEnemy = () => {
         spawn("Junin", 100, 5, "black", "enemy")
     }
+    let stopInterval = () => {
+        clearInterval(rounds);
+    }
 
-    let game = () => {
+    let stopEnemies = () => {
+        clearInterval(enemies);
+    }
+    
+    let gameLoop = () => {
         p1.generateMana();
         if (!Object.entries(objectOfAlliesSpawned).length == 0) {
             for (let allie in objectOfAlliesSpawned) {
                 if (objectOfAlliesSpawned[allie].hp <= 0) {
                     delete objectOfAlliesSpawned[allie];
                 } else {
-                    objectOfAlliesSpawned[allie].tryToAttackThenWalk(objectOfEnemiesSpawned)
+                    objectOfAlliesSpawned[allie].tryToAttackThenWalk(objectOfEnemiesSpawned, enemyTower)
                 }
             }
         }
@@ -87,23 +94,20 @@ let playGame = (screenNumber = 2) => {
                 if (objectOfEnemiesSpawned[enemie].hp <= 0) {
                     delete objectOfEnemiesSpawned[enemie];
                 } else {
-                    objectOfEnemiesSpawned[enemie].tryToAttackThenWalk(objectOfAlliesSpawned);
+                    objectOfEnemiesSpawned[enemie].tryToAttackThenWalk(objectOfAlliesSpawned, allyTower);
                 }
             }
+        }
+        if (allyTower.hp <= 0 || enemyTower.hp <= 0) {
+            console.log("End game")
+            stopInterval()
+            stopEnemies()
         }
         console.log(objectOfEnemiesSpawned)
     }
 
-    let stopInterval = () => {
-        clearInterval(rounds);
-    }
-    
-    let stopEnemies = () => {
-        clearInterval(enemies);
-    }
-
     let enemies = setInterval(spawnEnemy, 7000) // spawning enemies
-    let rounds = setInterval(game, 500); // time that the game flows
+    let rounds = setInterval(gameLoop, 500); // time that the game flows
     setTimeout(stopInterval, 65000); // time until game end
     setTimeout(stopEnemies, 8000); // stopping the spawn of enemies
 }

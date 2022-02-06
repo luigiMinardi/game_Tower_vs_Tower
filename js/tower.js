@@ -5,6 +5,9 @@ class Tower {
 
         this.sprite = sprite;
         this.id = id;
+
+        this.element = document.getElementById(id)
+        this.position = this.element.offsetLeft
     }
 
     towerHitted(damage) {

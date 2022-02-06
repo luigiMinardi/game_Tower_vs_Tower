@@ -3,13 +3,13 @@ class Enemy extends Mob {
         super(name, hp, atk, sprite, id);
     }
 
-    tryToAttackThenWalk(opponents) {
-        if (!this.attack(opponents)) {
+    tryToAttackThenWalk(opponents, tower) {
+        if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
             elementToMove.style.right = this.x;
         } else {
-            this.attack(opponents)
+            this.attack(opponents, tower)
         }
     }
 

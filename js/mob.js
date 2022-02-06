@@ -34,11 +34,6 @@ class Mob {
     }
 
     findEnemy(opponents) {
-        /*
-        TODO:
-         * Map list of opponents and see if has a match 
-         * then return all matched enemies
-         */
         let { areaStart, areaEnd } = this.areaOfAttack(this.id);
         let opponentsToAttack = [];
         for (let opponent in opponents) {
@@ -52,8 +47,10 @@ class Mob {
         return opponentsToAttack
     }
 
-    attack(opponents) {
+    attack(opponents, tower) {
         let opponentsToAttack = this.findEnemy(opponents)
+        let { areaStart, areaEnd } = this.areaOfAttack(this.id);
+        let trueOrFalse = false
         if (opponentsToAttack.length > 0) {
             let i = 0
             for (let opponent in opponents) {
@@ -68,19 +65,25 @@ class Mob {
                 }
                 i++
             }
-            return true
+            trueOrFalse = true //found enemies
         } else {
-            return false
+            trueOrFalse = false //without enemies
         }
+        if (tower.position > areaStart && tower.position < areaEnd) {
+            tower.hp -= this.atk;
+            console.log(tower.hp)
+            trueOrFalse = true //with tower infront
+        }
+        return trueOrFalse
     }
 
-    tryToAttackThenWalk(opponents) {
-        if (!this.attack(opponents)) {
+    tryToAttackThenWalk(opponents, tower) {
+        if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
             elementToMove.style.left = this.x;
         } else {
-            this.attack(opponents)
+            this.attack(opponents, tower)
         }
     }
 }
