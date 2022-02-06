@@ -28,41 +28,59 @@ class Mob {
         let target = document.getElementById(id);
 
         return {
-            areaStart: target.offsetLeft + target.offsetHeight,
-            areaEnd: target.offsetLeft + target.offsetHeight * 2 // position + size of mob
+            areaStart: target?.offsetLeft + target?.offsetHeight,
+            areaEnd: target?.offsetLeft + target?.offsetHeight * 2 // position + size of mob
         }
     }
 
-    findEnemy(opponent) {
+    findEnemy(opponents) {
         /*
         TODO:
          * Map list of opponents and see if has a match 
-         * then return true or false
+         * then return all matched enemies
          */
-        let opponentInScreen = document.getElementById(opponent.id)
-        let positionOponent = opponentInScreen.offsetLeft
-        let { areaStart, areaEnd } = this.areaOfAttack(this.id)
-        console.log(positionOponent, "positionOponent")
-        console.log(areaStart, "areaStart")
-        console.log(areaEnd, "areaEnd")
-        return positionOponent > areaStart && positionOponent < areaEnd && this.y == opponent.y;
+        let { areaStart, areaEnd } = this.areaOfAttack(this.id);
+        let opponentsToAttack = [];
+        for (let opponent in opponents) {
+            let opponentId = opponents[opponent].id;
+            let opponentInScreen = document.getElementById(opponentId);
+            let positionOponent = opponentInScreen?.offsetLeft;
+            if (positionOponent > areaStart && positionOponent < areaEnd) {
+                opponentsToAttack.push(opponentId);
+            }
+        }
+        return opponentsToAttack
     }
 
-    attack(opponent) {
-        if (this.findEnemy(opponent) && opponent.hp > 0) {
-            opponent.hp -= this.atk;
-            console.log(opponent.hp);
-        } else if (opponent.hp <= 0 && this.findEnemy(opponent)) {
-            console.log("your opponent died");
+    attack(opponents) {
+        let opponentsToAttack = this.findEnemy(opponents)
+        if (opponentsToAttack.length > 0) {
+            let i = 0
+            for (let opponent in opponents) {
+                let opponentId = opponents[opponent].id;
+                if (opponentId == opponentsToAttack[i]) {
+                    opponents[opponent].hp -= this.atk;
+                    console.log(opponents[opponent].hp);
+                }
+                if (opponents[opponent].hp <= 0) {
+                    let opponentInScreen = document.getElementById(opponentId);
+                    opponentInScreen.remove();
+                }
+                i++
+            }
+            return true
         } else {
-            console.log("Without opponent in front of you");
+            return false
         }
     }
 
-    walk() {
-        let elementToMove = document.getElementById(this.id);
-        this.x = this.addEm(this.x, this.velocity);
-        elementToMove.style.left = this.x;
-        console.log(elementToMove.style.left);
+    tryToAttackThenWalk(opponents) {
+        if (!this.attack(opponents)) {
+            let elementToMove = document.getElementById(this.id);
+            this.x = this.addEm(this.x, this.velocity);
+            elementToMove.style.left = this.x;
+        } else {
+            this.attack(opponents)
+        }
     }
 }

@@ -25,8 +25,6 @@ let objectOfEnemiesSpawned = {};
 let spawn = (name, hp, atk, sprite, type, price = 0) => {
     let id = name + numberOfMobsSpawned; //create mob (html div) id
     let mob = '';
-    console.log(objectOfAlliesSpawned);
-    console.log(objectOfEnemiesSpawned);
 
     let minion = document.createElement("div"); //creating the html element
 
@@ -76,16 +74,24 @@ let playGame = (screenNumber = 2) => {
     let game = () => {
         p1.generateMana();
         if (!Object.entries(objectOfAlliesSpawned).length == 0) {
-            for (let allies in objectOfAlliesSpawned) {
-                objectOfAlliesSpawned[allies].walk(0.1)
+            for (let allie in objectOfAlliesSpawned) {
+                if (objectOfAlliesSpawned[allie].hp <= 0) {
+                    delete objectOfAlliesSpawned[allie];
+                } else {
+                    objectOfAlliesSpawned[allie].tryToAttackThenWalk(objectOfEnemiesSpawned)
+                }
             }
         }
         if (!Object.entries(objectOfEnemiesSpawned).length == 0) {
-            for (let enemies in objectOfEnemiesSpawned) {
-                console.log(objectOfEnemiesSpawned[enemies])
-                objectOfEnemiesSpawned[enemies].walk(0.1)
+            for (let enemie in objectOfEnemiesSpawned) {
+                if (objectOfEnemiesSpawned[enemie].hp <= 0) {
+                    delete objectOfEnemiesSpawned[enemie];
+                } else {
+                    objectOfEnemiesSpawned[enemie].tryToAttackThenWalk(objectOfAlliesSpawned);
+                }
             }
         }
+        console.log(objectOfEnemiesSpawned)
     }
 
     let stopInterval = () => {
@@ -98,6 +104,6 @@ let playGame = (screenNumber = 2) => {
 
     let enemies = setInterval(spawnEnemy, 7000) // spawning enemies
     let rounds = setInterval(game, 500); // time that the game flows
-    setTimeout(stopInterval, 60000); // time until game end
-    setTimeout(stopEnemies, 60000); // stopping the spawn of enemies
+    setTimeout(stopInterval, 65000); // time until game end
+    setTimeout(stopEnemies, 8000); // stopping the spawn of enemies
 }
