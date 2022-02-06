@@ -13,18 +13,27 @@ let changeScreen = (screenNumber) => {
     }
 }
 
+//Set player and towers
+let p1 = new Player();
+let allyTower = new Tower('yellow', 'towerAlly');
+let enemyTower = new Tower('pink', 'towerEnemy');
+
 // Spawn mobs
 let numberOfMobsSpawned = 0;
-let objectOfMobsSpawned = {};
-let spawn = (name, hp, atk, sprite, type) => {
+let objectOfAlliesSpawned = {};
+let objectOfEnemiesSpawned = {};
+let spawn = (name, hp, atk, sprite, type, price = 0) => {
     let id = name + numberOfMobsSpawned; //create mob (html div) id
     let mob = '';
-    console.log(objectOfMobsSpawned);
+    console.log(objectOfAlliesSpawned);
+    console.log(objectOfEnemiesSpawned);
 
     let minion = document.createElement("div"); //creating the html element
 
-    if (type == "spawn") {
-        mob = new Spawnable(name, hp, atk, sprite, id); //instance of object spawnable
+    if (type == "spawn" && p1.mana >= price) {
+        p1.mana -= price; //deducting the mana of the player
+        p1.updateCounter();
+        mob = new Spawnable(name, hp, atk, sprite, id, price); //instance of object spawnable
         minion.style = `
             width: ${mob.width};
             height: ${mob.height};
@@ -33,6 +42,7 @@ let spawn = (name, hp, atk, sprite, type) => {
             left: 5em;
             bottom: 5em;
         ` // setting style
+        objectOfAlliesSpawned[id] = mob; //adding mob to the object of mobs
     } else if (type == "enemy") {
         mob = new Enemy(name, hp, atk, sprite, id);
         minion.style = `
@@ -42,11 +52,11 @@ let spawn = (name, hp, atk, sprite, type) => {
             position: absolute;
             bottom: 5em;
         ` // setting style
+        objectOfEnemiesSpawned[id] = mob; //adding mob to the object of mobs
     } else {
         delete minion;
         return console.log(`${type} is not a valid type of mob.`);
     }
-    objectOfMobsSpawned[id] = mob; //adding mob to the object of mobs
 
     minion.id = mob.id; //putting the id in the html
 
@@ -57,15 +67,31 @@ let spawn = (name, hp, atk, sprite, type) => {
 }
 
 spawn("Junin", 100, 5, "black", "enemy");
-objectOfMobsSpawned["Junin0"].walk(6);
+objectOfEnemiesSpawned["Junin0"].walk(6);
 
-let p1 = new Player()
-let allyTower = new Tower('yellow', 'towerAlly')
-let enemyTower = new Tower('pink', 'towerEnemy')
-
-let playGame = (screenNumber) => {
-
-    while (allyTower.hp > 0 && enemyTower.hp > 0) {
-        enemyTower.towerHitted(1)
+let playGame = (screenNumber = 2) => {
+    // Get the Interval ID
+    let test = () => {
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        p1.generateMana();
+        if (!Object.entries(objectOfAlliesSpawned).length == 0) {
+            for (let allies in objectOfAlliesSpawned) {
+                console.log(objectOfAlliesSpawned[allies])
+                objectOfAlliesSpawned[allies].walk(0.1)
+            }
+        }
     }
+    let stop_interval = () => {
+        clearInterval(setInterval_ID);
+    }
+    var setInterval_ID = setInterval(test, 500);
+    // Set timeout to call stop_interval function after 12 seconds
+    setTimeout(stop_interval, 60000); // time until game end
+
 }

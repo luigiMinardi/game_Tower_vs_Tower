@@ -1,6 +1,7 @@
 class Spawnable extends Mob {
-    constructor(name, hp, atk, sprite, id) {
+    constructor(name, hp, atk, sprite, id, price) {
         super(name, hp, atk, sprite, id);
+        this.price = price
     }
 }
 
