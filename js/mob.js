@@ -15,11 +15,11 @@ class Mob {
     }
 
     addEm(position, em) {
-        return parseInt(position.replace("em", "")) + em + "em";
+        return parseFloat(position.replace("em", "")) + em + "em";
     }
 
     subtractEm(position, em) {
-        return parseInt(position.replace("em", "")) - em + "em";
+        return parseFloat(position.replace("em", "")) - em + "em";
     }
 
     areaOfAttack = (id) => {
@@ -27,7 +27,7 @@ class Mob {
 
         return {
             areaStart: target.offsetLeft + target.offsetHeight,
-            areaEnd: target.offsetLeft + target.offsetHeight*2 // position + size of mob
+            areaEnd: target.offsetLeft + target.offsetHeight * 2 // position + size of mob
         }
     }
 
@@ -39,7 +39,7 @@ class Mob {
          */
         let opponentInScreen = document.getElementById(opponent.id)
         let positionOponent = opponentInScreen.offsetLeft
-        let {areaStart, areaEnd} = this.areaOfAttack(this.id)
+        let { areaStart, areaEnd } = this.areaOfAttack(this.id)
         console.log(positionOponent, "positionOponent")
         console.log(areaStart, "areaStart")
         console.log(areaEnd, "areaEnd")

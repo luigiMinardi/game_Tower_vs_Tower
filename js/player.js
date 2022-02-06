@@ -34,11 +34,11 @@ class Player {
     }
 
     upgradeManaGenerator() {
-        if (this.mana >= 75 % this.maxMana && this.manaGeneratorLevel < 7) {
+        if (this.mana >= 75 % this.maxMana && this.manaGeneratorLevel < 6) {
             this.mana -= 75 % this.maxMana;
             this.manaGeneratorLevel++;
             this.#manaGenerator();
-            this.manaCounter.innerText = `Mana: ${this.mana}/${this.maxMana}`;
+            this.updateCounter();
         } else if (this.manaGeneratorLevel == 6) {
             console.log("Max level");
         } else {
@@ -50,8 +50,12 @@ class Player {
 
     generateMana() {
         if (this.mana < this.maxMana) {
-            this.mana += this.manaGeranationRate;
-            this.manaCounter.innerText = `Mana: ${this.mana}/${this.maxMana}`;
+            this.mana += Math.round(this.manaGeranationRate);
+            this.updateCounter();
         }
+    }
+
+    updateCounter() {
+        this.manaCounter.innerText = `Mana: ${this.mana}/${this.maxMana}`;
     }
 }
