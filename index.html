@@ -11,27 +11,29 @@
 
 <body>
 
-    <!-- <section id="screen1" onclick="changeScreen(2)">
-        <div class="canvas1"></div>
-    </section> -->
+    <section id="screen1" onclick="playGame()">
+        <div class="canvas1">
+            <p style="color: white;" >Click on the screen to play the game</p>
+        </div>
+    </section>
 
-    <section id="screen2" style="display: block;">
+    <section id="screen2" style="display: none;">
         <div class="canvas2" id="game">
             <div class="data">
                 <p id="manaCounter">Mana: 0/100</p>
             </div>
-            <button onclick="playGame()">Play</button>
             <button onclick="spawn('Junao', 100, 5, 'white', 'spawn', 10)">Spawn</button>
-            <button onclick="p1.generateMana()">Gen Mana</button>
             <button onclick="p1.upgradeManaGenerator()">Up Mana</button>
             <div id="towerAlly"></div>
             <div id="towerEnemy"></div>
         </div>
     </section>
 
-    <!-- <section id="screen3" style="display: none;" onclick="changeScreen(1)">
-        <div class="canvas3"></div>
-    </section> -->
+    <section id="screen3" style="display: none;" onclick="changeScreen(1)">
+        <div class="canvas3">
+            <p id="gameOver">Game over! Click on the screen to play again</p>
+        </div>
+    </section>
 
     <script src="js/mob.js"></script>
     <script src="js/enemies.js"></script>

@@ -13,10 +13,8 @@ let changeScreen = (screenNumber) => {
     }
 }
 
-//Set player and towers
+//Set player
 let p1 = new Player();
-let allyTower = new Tower('yellow', 'towerAlly');
-let enemyTower = new Tower('pink', 'towerEnemy');
 
 // Spawn mobs
 let numberOfMobsSpawned = 0;
@@ -65,19 +63,45 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
     game.appendChild(minion); //adding mob in game
 }
 
+let allyTower = '';
+let enemyTower = '';
+
+let createGame = () => {
+    allyTower = new Tower('yellow', 'towerAlly');
+    enemyTower = new Tower('pink', 'towerEnemy');
+}
+
+let restart = () => {
+    for (let allie in objectOfAlliesSpawned) {
+        let allieInScreen = document.getElementById(objectOfAlliesSpawned[allie].id);
+        allieInScreen.remove();
+    }
+    for (let enemie in objectOfEnemiesSpawned) {
+        let enemieInScreen = document.getElementById(objectOfEnemiesSpawned[enemie].id);
+        enemieInScreen.remove();
+    }
+    objectOfAlliesSpawned = {};
+    objectOfEnemiesSpawned = {};
+    p1.mana = 0;
+    p1.updateCounter()
+    p1.manaGeneratorLevel = 1;
+    p1.manaGeranationRate = 1;
+}
+
 let playGame = (screenNumber = 2) => {
+    changeScreen(screenNumber);
+    createGame()
 
     let spawnEnemy = () => {
-        spawn("Junin", 100, 5, "black", "enemy")
+        spawn("Junin", 100, 5, "purple", "enemy")
     }
     let stopInterval = () => {
         clearInterval(rounds);
     }
-
     let stopEnemies = () => {
         clearInterval(enemies);
     }
-    
+
     let gameLoop = () => {
         p1.generateMana();
         if (!Object.entries(objectOfAlliesSpawned).length == 0) {
@@ -99,15 +123,19 @@ let playGame = (screenNumber = 2) => {
             }
         }
         if (allyTower.hp <= 0 || enemyTower.hp <= 0) {
-            console.log("End game")
+            let gameOver = document.getElementById('gameOver');
+            gameOver.innerHTML = enemyTower.hp <= 0
+                ? "Game over, you win! Click on the screen to play again"
+                : "Game over, you lose! Click on the screen to play again";
             stopInterval()
             stopEnemies()
+            restart()
+            changeScreen(3)
         }
-        console.log(objectOfEnemiesSpawned)
     }
 
     let enemies = setInterval(spawnEnemy, 7000) // spawning enemies
     let rounds = setInterval(gameLoop, 500); // time that the game flows
-    setTimeout(stopInterval, 65000); // time until game end
-    setTimeout(stopEnemies, 8000); // stopping the spawn of enemies
+    setTimeout(stopInterval, 650000); // time until game end
+    setTimeout(stopEnemies, 650000); // stopping the spawn of enemies
 }

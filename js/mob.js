@@ -69,6 +69,7 @@ class Mob {
         } else {
             trueOrFalse = false //without enemies
         }
+        console.log(tower.id, tower.position, tower.hp)
         if (tower.position > areaStart && tower.position < areaEnd) {
             tower.hp -= this.atk;
             console.log(tower.hp)
