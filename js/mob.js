@@ -7,7 +7,7 @@ class Mob {
         this.sprite = sprite;
         this.id = id;
 
-        this.x = "5em"; // left to right (player) | right to left (enemy)
+        this.x = "3em"; // left to right (player) | right to left (enemy)
         this.y = "5em"; // bottom to top
 
         this.width = "3em";
@@ -57,7 +57,6 @@ class Mob {
                 let opponentId = opponents[opponent].id;
                 if (opponentId == opponentsToAttack[i]) {
                     opponents[opponent].hp -= this.atk;
-                    console.log(opponents[opponent].hp);
                 }
                 if (opponents[opponent].hp <= 0) {
                     let opponentInScreen = document.getElementById(opponentId);
@@ -69,7 +68,6 @@ class Mob {
         } else {
             trueOrFalse = false //without enemies
         }
-        console.log(tower.id, tower.position, tower.hp)
         if (tower.position > areaStart && tower.position < areaEnd) {
             tower.hp -= this.atk;
             console.log(tower.hp)

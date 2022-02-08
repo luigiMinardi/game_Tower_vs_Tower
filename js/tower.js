@@ -1,6 +1,7 @@
 class Tower {
     constructor(sprite, id) {
-        this.hp = 100;
+        this.maxHp = 1000;
+        this.hp = 1000;
         this.level = 0;
 
         this.sprite = sprite;
@@ -8,13 +9,5 @@ class Tower {
 
         this.element = document.getElementById(id)
         this.position = this.element.offsetLeft
-    }
-
-    towerHitted(damage) {
-        if (this.hp > 0) {
-            this.hp -= damage;
-        } else {
-            console.log("F tower")
-        }
     }
 }
