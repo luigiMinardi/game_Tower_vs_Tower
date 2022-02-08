@@ -41,6 +41,14 @@ body {
     width: 5em;
     position: absolute;
     bottom: 5em;
+    display: flex;
+    align-items: flex-end;
+}
+
+#allyTowerHp, #enemyTowerHp {
+    height: 1em;
+    width: 100%;
+    background-color: red;
 }
 
 #towerAlly {

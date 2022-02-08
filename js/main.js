@@ -71,6 +71,14 @@ let createGame = () => {
     enemyTower = new Tower('pink', 'towerEnemy');
 }
 
+let towerHp = (towerAlly, towerEnemy) => {
+    let allyTowerHp = document.getElementById('allyTowerHp');
+    let enemyTowerHp = document.getElementById('enemyTowerHp');
+    console.log(towerAlly.hp / (1 / 100 * towerAlly.maxHp), "towwr")
+    allyTowerHp.style.width = towerAlly.hp / (1 / 100 * towerAlly.maxHp) + '%';
+    enemyTowerHp.style.width = towerEnemy.hp + '%';
+}
+
 let restart = () => {
     for (let allie in objectOfAlliesSpawned) {
         let allieInScreen = document.getElementById(objectOfAlliesSpawned[allie].id);
@@ -105,6 +113,7 @@ let playGame = (screenNumber = 2) => {
 
     let gameLoop = () => {
         p1.generateMana();
+        towerHp(allyTower, enemyTower)
         if (!Object.entries(objectOfAlliesSpawned).length == 0) {
             for (let allie in objectOfAlliesSpawned) {
                 if (objectOfAlliesSpawned[allie].hp <= 0) {
@@ -135,7 +144,7 @@ let playGame = (screenNumber = 2) => {
         }
     }
 
-    let enemies = setInterval(spawnEnemy, 7000) // spawning enemies
+    let enemies = setInterval(spawnEnemy, 8000) // spawning enemies
     let rounds = setInterval(gameLoop, 500); // time that the game flows
     setTimeout(stopInterval, 650000); // time until game end
     setTimeout(stopEnemies, 650000); // stopping the spawn of enemies
