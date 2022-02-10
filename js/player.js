@@ -24,11 +24,11 @@ class Player {
                 break;
             case 5:
                 this.maxMana = 500;
-                this.manaGeranationRate = 2;
+                this.manaGeranationRate = 2.5;
                 break;
             case 6:
                 this.maxMana = 1000;
-                this.manaGeranationRate = 2.2;
+                this.manaGeranationRate = 3;
                 break;
         }
     }
