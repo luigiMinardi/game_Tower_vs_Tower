@@ -35,8 +35,8 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
             height: ${mob.height};
             background-color: ${mob.sprite};
             position: absolute;
-            left: 5em;
-            bottom: 5em;
+            left: ${mob.x};
+            bottom: ${mob.y};
         ` // setting style
         objectOfAlliesSpawned[id] = mob; //adding mob to the object of mobs
     } else if (type == "enemy") {
@@ -46,8 +46,8 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
             height: ${mob.height};
             background-color: ${mob.sprite};
             position: absolute;
-            right: 5em;
-            bottom: 5em;
+            right: ${mob.x};
+            bottom: ${mob.y};
         ` // setting style
         objectOfEnemiesSpawned[id] = mob; //adding mob to the object of mobs
     } else {
@@ -76,7 +76,7 @@ let towerHp = (towerAlly, towerEnemy) => {
     let enemyTowerHp = document.getElementById('enemyTowerHp');
     console.log(towerAlly.hp / (1 / 100 * towerAlly.maxHp), "towwr")
     allyTowerHp.style.width = towerAlly.hp / (1 / 100 * towerAlly.maxHp) + '%';
-    enemyTowerHp.style.width = towerEnemy.hp + '%';
+    enemyTowerHp.style.width = towerEnemy.hp / (1 / 100 * towerEnemy.maxHp) + '%';
 }
 
 let restart = () => {
@@ -99,7 +99,7 @@ let restart = () => {
 
 let playGame = (screenNumber = 2) => {
     changeScreen(screenNumber);
-    createGame()
+    createGame();
 
     let spawnEnemy = () => {
         spawn("Junin", 100, 5, "purple", "enemy")
@@ -137,15 +137,15 @@ let playGame = (screenNumber = 2) => {
             gameOver.innerHTML = enemyTower.hp <= 0
                 ? "Game over, you win! Click on the screen to play again"
                 : "Game over, you lose! Click on the screen to play again";
-            stopInterval()
-            stopEnemies()
-            restart()
-            changeScreen(3)
+            stopEnemies();
+            stopInterval();
+            restart();
+            changeScreen(3);
         }
     }
-
-    let enemies = setInterval(spawnEnemy, 8000) // spawning enemies
+    let gameTimer = 1200000; // 20 minutes
+    let enemies = setInterval(spawnEnemy, 8000); // spawning enemies
     let rounds = setInterval(gameLoop, 500); // time that the game flows
-    setTimeout(stopInterval, 650000); // time until game end
-    setTimeout(stopEnemies, 650000); // stopping the spawn of enemies
+    setTimeout(stopEnemies, gameTimer); // stopping the spawn of enemies
+    setTimeout(stopInterval, gameTimer); // time until game end
 }
