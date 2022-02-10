@@ -1,6 +1,7 @@
 # 🏰 Tower vs Tower game 🏰
 
 <div align="center">
+    <img alt="Project Version" src= "https://img.shields.io/github/v/tag/luigiMinardi/game_Tower_vs_Tower?color=Green&label=Game%20Version&style=for-the-badge">
     <a href="https://github.com/luigiMinardi/game_Tower_vs_Tower/blob/main/LICENSE">
         <img alt="GitHub license" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge">
     </a>
