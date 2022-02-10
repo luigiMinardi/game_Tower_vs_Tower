@@ -33,8 +33,11 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
         minion.style = `
             width: ${mob.width};
             height: ${mob.height};
+
             background-image: ${mob.sprite};
             background-size: cover;
+            filter: invert(55%) sepia(64%) saturate(497%) hue-rotate(128deg) brightness(92%) contrast(91%);
+
             position: absolute;
             left: 5em;
             bottom: 5em;
@@ -45,8 +48,12 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
         minion.style = `
             width: ${mob.width};
             height: ${mob.height};
+
             background-image: ${mob.sprite};
             background-size: cover;
+            filter: invert(12%) sepia(67%) saturate(3625%) hue-rotate(348deg) brightness(99%) contrast(94%);
+            transform: scaleX(-1);
+
             position: absolute;
             right: 5em;
             bottom: 5em;

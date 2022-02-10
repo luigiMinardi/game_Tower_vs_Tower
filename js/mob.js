@@ -7,7 +7,7 @@ class Mob {
         this.sprite = sprite;
         this.id = id;
 
-        this.x = "3em"; // left to right (player) | right to left (enemy)
+        this.x = "1em"; // left to right (player) | right to left (enemy)
         this.y = "5em"; // bottom to top
 
         this.width = "3em";

@@ -19,7 +19,9 @@ body {
 }
 
 .canvas2 {    
-    background-color: blue;
+    background-image: url(../assets/img/background.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .canvas3 {
