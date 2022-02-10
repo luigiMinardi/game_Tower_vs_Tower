@@ -30,21 +30,21 @@ class Mob {
         element.style.backgroundSize = 'cover';
     }
 
-    animateWalk() {
+    animate(spriteName, interval) {
+        //! interval == totalSprites / timeOfTheGame // (rn is 500)
         let i = 0;
-        let walk = setInterval(() => {
-            this.sprite = `assets/sprites/Running/Running_0${i}.png`;
+        let animateSprites = setInterval(() => {
+            this.sprite = `assets/sprites/${spriteName}/${spriteName}_0${i}.png`;
             this.setSprite(this.sprite);
             i++;
-        }, 41);
+        }, interval);
         setTimeout(() => {
-            clearInterval(walk);
+            clearInterval(animateSprites);
         }, 500);
     }
 
     areaOfAttack = (id) => {
         let target = document.getElementById(id);
-        console.log(this.id, target.offsetLeft)
         /*
         if target?.offsetLeft == 80 //? element left side is 80px from the left side of the screen
         and target?.offsetHeight == 48 //? (3em)
@@ -60,7 +60,6 @@ class Mob {
 
     findEnemy(opponents) {
         let { areaStart, areaEnd } = this.areaOfAttack(this.id);
-        console.log(this.id, areaStart, areaEnd);
         let opponentsToAttack = [];
         for (let opponent in opponents) {
             let opponentId = opponents[opponent].id;
@@ -78,6 +77,7 @@ class Mob {
         let { areaStart, areaEnd } = this.areaOfAttack(this.id);
         let trueOrFalse = false
         if (opponentsToAttack.length > 0) {
+            this.animate('Slashing', 26)
             let i = 0
             for (let opponent in opponents) {
                 let opponentId = opponents[opponent].id;
@@ -95,6 +95,7 @@ class Mob {
             trueOrFalse = false //without enemies
         }
         if (tower.position > areaStart && tower.position < areaEnd) {
+            this.animate('Slashing', 26)
             tower.hp -= this.atk;
             console.log(tower.hp)
             trueOrFalse = true //with tower infront
@@ -106,11 +107,10 @@ class Mob {
         if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
-            this.animateWalk();
+            this.animate('Running', 41);
             elementToMove.style.left = this.x;
 
         } else {
-            console.log('------------------------------------------foundEnemy');
             this.attack(opponents, tower)
         }
     }

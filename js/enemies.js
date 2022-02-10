@@ -7,17 +7,15 @@ class Enemy extends Mob {
         if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
-            this.animateWalk();
+            this.animate('Running', 41);
             elementToMove.style.right = this.x;
         } else {
-            console.log('--------------------------------------foundAlly');
             this.attack(opponents, tower)
         }
     }
 
     areaOfAttack = (id) => {
         let target = document.getElementById(id);
-        console.log(this.id, target.offsetLeft)
         /*
         if target?.offsetLeft == 330  //? left side of the element is 330px from the left end of screen
         and target?.offsetHeight == 48 //? (3em)
