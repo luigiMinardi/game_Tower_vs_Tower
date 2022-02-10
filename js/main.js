@@ -44,7 +44,8 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
         minion.style = `
             width: ${mob.width};
             height: ${mob.height};
-            background-color: ${mob.sprite};
+            background-image: ${mob.sprite};
+            background-size: cover;
             position: absolute;
             right: 5em;
             bottom: 5em;
@@ -74,7 +75,7 @@ let createGame = () => {
 let towerHp = (towerAlly, towerEnemy) => {
     let allyTowerHp = document.getElementById('allyTowerHp');
     let enemyTowerHp = document.getElementById('enemyTowerHp');
-    console.log(towerAlly.hp / (1 / 100 * towerAlly.maxHp), "towwr")
+    // console.log(towerAlly.hp / (1 / 100 * towerAlly.maxHp), "towwr")
     allyTowerHp.style.width = towerAlly.hp / (1 / 100 * towerAlly.maxHp) + '%';
     enemyTowerHp.style.width = towerEnemy.hp + '%';
 }
@@ -102,7 +103,7 @@ let playGame = (screenNumber = 2) => {
     createGame()
 
     let spawnEnemy = () => {
-        spawn("Junin", 100, 5, "purple", "enemy")
+        spawn('Junin', 100, 5, 'assets/sprites/Idle/Idle_000.png', 'enemy')
     }
     let stopInterval = () => {
         clearInterval(rounds);

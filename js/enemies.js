@@ -7,6 +7,7 @@ class Enemy extends Mob {
         if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
+            this.animateWalk();
             elementToMove.style.right = this.x;
         } else {
             this.attack(opponents, tower)

@@ -24,6 +24,28 @@ class Mob {
         return parseFloat(position.replace("em", "")) - em + "em";
     }
 
+    setSprite(newSprite) {
+        let element = document.getElementById(this.id);
+        console.log(element, "elmnt");
+        console.log(newSprite, "nwsprt");
+        element.style.backgroundImage = `url(${newSprite})`;
+        element.style.backgroundSize = 'cover';
+    }
+
+    animateWalk() {
+        let i = 0;
+        let walk = setInterval(() => {
+            console.log(this.sprite);
+            this.sprite = `assets/sprites/Running/Running_0${i}.png`;
+            console.log(`Sprite: ${this.sprite}`);
+            this.setSprite(this.sprite);
+            i++;
+        }, 41);
+        setTimeout(() => {
+            clearInterval(walk);
+        }, 500);
+    }
+
     areaOfAttack = (id) => {
         let target = document.getElementById(id);
 
@@ -80,7 +102,9 @@ class Mob {
         if (!this.attack(opponents, tower)) {
             let elementToMove = document.getElementById(this.id);
             this.x = this.addEm(this.x, this.velocity);
+            this.animateWalk();
             elementToMove.style.left = this.x;
+
         } else {
             this.attack(opponents, tower)
         }
