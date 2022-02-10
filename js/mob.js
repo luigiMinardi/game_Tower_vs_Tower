@@ -26,8 +26,6 @@ class Mob {
 
     setSprite(newSprite) {
         let element = document.getElementById(this.id);
-        console.log(element, "elmnt");
-        console.log(newSprite, "nwsprt");
         element.style.backgroundImage = `url(${newSprite})`;
         element.style.backgroundSize = 'cover';
     }
@@ -35,9 +33,7 @@ class Mob {
     animateWalk() {
         let i = 0;
         let walk = setInterval(() => {
-            console.log(this.sprite);
             this.sprite = `assets/sprites/Running/Running_0${i}.png`;
-            console.log(`Sprite: ${this.sprite}`);
             this.setSprite(this.sprite);
             i++;
         }, 41);
@@ -48,15 +44,23 @@ class Mob {
 
     areaOfAttack = (id) => {
         let target = document.getElementById(id);
-
+        console.log(this.id, target.offsetLeft)
+        /*
+        if target?.offsetLeft == 80 //? element left side is 80px from the left side of the screen
+        and target?.offsetHeight == 48 //? (3em)
+        areaStart == 104 //? position of the sprite (half of "you", sprite is in the center)
+        areaEnd == 128 //? position of the enemy (one "you" of distance)
+        areaBetween == 24 //? range of attack
+        */
         return {
-            areaStart: target?.offsetLeft + target?.offsetHeight,
-            areaEnd: target?.offsetLeft + target?.offsetHeight * 2 // position + size of mob
+            areaStart: target?.offsetLeft + target?.offsetHeight / 2,
+            areaEnd: target?.offsetLeft + target?.offsetHeight
         }
     }
 
     findEnemy(opponents) {
         let { areaStart, areaEnd } = this.areaOfAttack(this.id);
+        console.log(this.id, areaStart, areaEnd);
         let opponentsToAttack = [];
         for (let opponent in opponents) {
             let opponentId = opponents[opponent].id;
@@ -106,6 +110,7 @@ class Mob {
             elementToMove.style.left = this.x;
 
         } else {
+            console.log('------------------------------------------foundEnemy');
             this.attack(opponents, tower)
         }
     }

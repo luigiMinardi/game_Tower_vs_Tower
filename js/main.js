@@ -33,7 +33,8 @@ let spawn = (name, hp, atk, sprite, type, price = 0) => {
         minion.style = `
             width: ${mob.width};
             height: ${mob.height};
-            background-color: ${mob.sprite};
+            background-image: ${mob.sprite};
+            background-size: cover;
             position: absolute;
             left: 5em;
             bottom: 5em;
@@ -148,5 +149,5 @@ let playGame = (screenNumber = 2) => {
     let enemies = setInterval(spawnEnemy, 8000) // spawning enemies
     let rounds = setInterval(gameLoop, 500); // time that the game flows
     setTimeout(stopInterval, 650000); // time until game end
-    setTimeout(stopEnemies, 650000); // stopping the spawn of enemies
+    setTimeout(stopEnemies, 9000); // stopping the spawn of enemies
 }
