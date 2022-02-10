@@ -30,7 +30,7 @@ The tower is your base, you need to protect it with your soldiers! And take reve
 
 The tower has `1000 hp`.
 
-## 🪖 Spawns
+## ⚔️ Spawns
 
 Right now in the game you have only one option of spawns, but later we will add more as the project continues.
 
