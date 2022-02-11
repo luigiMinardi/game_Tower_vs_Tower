@@ -39,7 +39,7 @@ The spawn has `100 hp` and `5 atk` and costs `10 mana`.
 
 ## 💧 Mana
 
-The mana generates automatically one time each [round](https://github.com/luigiMinardi/game_Tower_vs_Tower/main/README.md#-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
+The mana generates automatically one time each [round](https://github.com/luigiMinardi/game_Tower_vs_Tower/blob/main/README.md#-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
 
 | Level | Mana Produced | Max Mana |
 | :---- | :-----------: | -------: |
