@@ -26,8 +26,10 @@ class Mob {
 
     setSprite(newSprite) {
         let element = document.getElementById(this.id);
-        element.style.backgroundImage = `url(${newSprite})`;
-        element.style.backgroundSize = 'cover';
+        if (element) {
+            element.style.backgroundImage = `url(${newSprite})`;
+            element.style.backgroundSize = 'cover';
+        }
     }
 
     animate(spriteName, interval) {
@@ -97,7 +99,6 @@ class Mob {
         if (tower.position > areaStart && tower.position < areaEnd) {
             this.animate('Slashing', 26)
             tower.hp -= this.atk;
-            console.log(tower.hp)
             trueOrFalse = true //with tower infront
         }
         return trueOrFalse
