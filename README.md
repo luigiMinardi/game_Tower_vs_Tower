@@ -19,7 +19,7 @@ To check the website of the game go [here](https://luigiminardi.github.io/game_T
 # :question: How to play
 
 ## ⌛️ Time Limit
-The game has a 20 minutes timer where you need to defend yourself from the horde of enemies and attack them within the time limit, if you aren't able to do so, the game ends and you lose.
+The game has a `20 minutes` timer where you need to defend yourself from the horde of enemies and attack them within the time limit, if you aren't able to do so, the game ends and you lose.
 
 ## ⏩️ Game Speed
 
@@ -39,7 +39,7 @@ The spawn has `100 hp` and `5 atk` and costs `10 mana`.
 
 ## 💧 Mana
 
-The mana generates automatically one time each [round](#%E2%8F%A9%EF%B8%8F-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
+The mana generates automatically one time each [round](#-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
 
 | Level | Mana Produced | Max Mana |
 | :---- | :-----------: | -------: |
@@ -48,7 +48,7 @@ The mana generates automatically one time each [round](#%E2%8F%A9%EF%B8%8F-game-
 | 3     |      1.4      |      250 |
 | 4     |      1.8      |      350 |
 | 5     |      2.5      |      500 |
-| 6     |       3       |      100 |
+| 6     |       3       |     1000 |
 
 # 🧑‍💻 MVP version (just the minimum to work)
 
