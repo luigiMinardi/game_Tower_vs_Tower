@@ -21,7 +21,7 @@ To check the website of the game go [here](https://luigiminardi.github.io/game_T
 ## ⌛️ Time Limit
 The game has a `20 minutes` timer where you need to defend yourself from the horde of enemies and attack them within the time limit, if you aren't able to do so, the game ends and you lose.
 
-## ⏩️ Game Speed
+## ⏩ Game Speed
 
 I call `round` every time something happens in the game (each "loop" of the game). Each `round` has 500ms (half a seccond).
 
@@ -39,7 +39,7 @@ The spawn has `100 hp` and `5 atk` and costs `10 mana`.
 
 ## 💧 Mana
 
-The mana generates automatically one time each [round](#-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
+The mana generates automatically one time each [round](https://github.com/luigiMinardi/game_Tower_vs_Tower/edit/main/README.md#-game-speed), the ammount of mana you get will vary accordingly with your mana generator level and you can upgrade it whenever you want. The **upgrade cost** is `75% of the max mana`.
 
 | Level | Mana Produced | Max Mana |
 | :---- | :-----------: | -------: |
