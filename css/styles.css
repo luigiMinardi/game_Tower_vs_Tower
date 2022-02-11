@@ -4,6 +4,13 @@ body {
 
     height: 100vh;
     width: 100vw;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    padding: 0;
+    margin: 0;
 }
 
 /* Canvas */
@@ -69,11 +76,46 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
 }
 
 .buttons button {
+    border: .1em solid black;
+    padding: 0;
+    margin: 0;
     margin-left: 1.2em;
+
+    width: 4em;
+
+    overflow: visible;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    color: black;
+
+    font: inherit;
+    text-align: center;
+
+    line-height: normal;
+    outline: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button:hover {
+    background-color: white;
+    transform: scale(.95);
+}
+
+#spawn {
+    width: 3em;
+    height: 3em;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 /* Towers */

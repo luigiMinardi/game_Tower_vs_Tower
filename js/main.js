@@ -13,6 +13,17 @@ let changeScreen = (screenNumber) => {
     }
 }
 
+// Animating char button
+
+let i = 0;
+let animateSpawn = () => {
+    let element = document.getElementById('spawn');
+    let newSprite = `assets/sprites/Idle/Idle_0${i}.png`;
+    element.style.backgroundImage = `url(${newSprite})`;
+    element.style.backgroundSize = 'cover';
+    i < 31 ? i++ : i = 0;
+}
+
 //Set player
 let p1 = new Player();
 
@@ -122,6 +133,7 @@ let playGame = (screenNumber = 2) => {
 
     let stopInterval = () => {
         clearInterval(rounds);
+        clearInterval(animateSprites);
         stopEnemies(); // stopping the spawn of enemies
         restart();
         changeScreen(3);
@@ -160,6 +172,7 @@ let playGame = (screenNumber = 2) => {
         }
     }
     let gameTimer = 1200000; // 20 minutes
+    let animateSprites = setInterval(animateSpawn, 40); // animation of Spawner button
     let enemies = setInterval(spawnEnemy, 8000); // spawning enemies
     let rounds = setInterval(gameLoop, 500); // time that the game flows
     setTimeout(stopInterval, gameTimer); // time until game end
