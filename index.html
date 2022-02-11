@@ -19,12 +19,13 @@
 
     <section id="screen2" style="display: none;">
         <div class="canvas2" id="game">
-            <div class="data">
+            <div class="navbar">
                 <p id="manaCounter">Mana: 0/100</p>
+                <button id="settings">Settings</button>
             </div>
             <div class="buttons">
-                <button onclick="spawn('Junao', 100, 5, 'assets/sprites/Idle/Idle_00.png', 'spawn', 10)">Spawn</button>
-                <button onclick="p1.upgradeManaGenerator()">Up Mana</button>
+                <button class="spawn" onclick="spawn('Junao', 100, 5, 'assets/sprites/Idle/Idle_00.png', 'spawn', 10)">Spawn</button>
+                <button class="mana" onclick="p1.upgradeManaGenerator()">Up Mana</button>
             </div>
             <div id="towerAlly"><div id="allyTowerHp"></div></div>
             <div id="towerEnemy"><div id="enemyTowerHp"></div></div>

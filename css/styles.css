@@ -36,16 +36,44 @@ body {
 
 /* "Navbar" and buttons */
 
-.navbar, .buttons {
-    display: flex;
+/* Navbar */
+.navbar {
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: repeat(12, 2fr);
     align-items: center;
-    justify-content: space-around;
+}
+
+#settings {
+    grid-column-start: 11;
 }
 
 #manaCounter {
     font-size: xx-large;
     color: white;
     text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
+
+    grid-column-start: 2;
+    grid-column-end: 8;
+}
+
+/* Buttons */
+
+.buttons {
+    height: 4em;
+    width: 100vw;
+    
+    margin-bottom: .5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.buttons button {
+    margin-left: 1.2em;
 }
 
 /* Towers */
