@@ -81,24 +81,51 @@ body {
 #towerAlly, #towerEnemy {
     height: 10em;
     width: 5em;
+
     position: absolute;
     bottom: 5em;
+
     display: flex;
     align-items: flex-end;
 }
 
 #allyTowerHp, #enemyTowerHp {
     height: 1em;
-    width: 100%;
-    background-color: red;
+    width: 5em;
+    
+    background-color: rgba(255, 0, 0, 0.7);
 }
 
 #towerAlly {
-    background-color: yellow;
     left: 1em;
+    transform: scaleX(-1);
+    background-size: cover;
 }
 
 #towerEnemy {
-    background-color: pink;
     right: 1em;
+    background-size: cover;
+}
+
+/* Tower Hp */
+
+.positionHpAlly, .positionHpEnemy {
+    position: absolute;
+    bottom: 5em;
+
+    height: 1em;
+    width: 5em;
+}
+
+.positionHpAlly {
+    left: 1em;
+}
+
+.positionHpEnemy {
+    right: 1em;
+}
+
+.borderHp {
+    border-radius: 15em;
+    border: .1em solid black;
 }

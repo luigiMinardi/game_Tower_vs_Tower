@@ -76,8 +76,10 @@ let allyTower = '';
 let enemyTower = '';
 
 let createGame = () => {
-    allyTower = new Tower('yellow', 'towerAlly');
-    enemyTower = new Tower('pink', 'towerEnemy');
+    allyTower = new Tower('assets/img/tower_2.png', 'towerAlly');
+    enemyTower = new Tower('assets/img/tower.png', 'towerEnemy');
+    allyTower.element.style.backgroundImage = `url(${allyTower.sprite})`;
+    enemyTower.element.style.backgroundImage = `url(${enemyTower.sprite})`;
 }
 
 let towerHp = (towerAlly, towerEnemy) => {
@@ -117,7 +119,7 @@ let playGame = (screenNumber = 2) => {
     let stopEnemies = () => {
         clearInterval(enemies);
     }
-    
+
     let stopInterval = () => {
         clearInterval(rounds);
         stopEnemies(); // stopping the spawn of enemies

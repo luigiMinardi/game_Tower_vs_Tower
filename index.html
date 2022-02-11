@@ -13,7 +13,7 @@
 
     <section id="screen1" onclick="playGame()">
         <div class="canvas1">
-            <p style="color: white;" >Click on the screen to play the game</p>
+            <p style="color: white;">Click on the screen to play the game</p>
         </div>
     </section>
 
@@ -24,11 +24,18 @@
                 <button id="settings">Settings</button>
             </div>
             <div class="buttons">
-                <button class="spawn" onclick="spawn('Junao', 100, 5, 'assets/sprites/Idle/Idle_00.png', 'spawn', 10)">Spawn</button>
+                <button class="spawn"
+                    onclick="spawn('Junao', 100, 5, 'assets/sprites/Idle/Idle_00.png', 'spawn', 10)">Spawn</button>
                 <button class="mana" onclick="p1.upgradeManaGenerator()">Up Mana</button>
             </div>
-            <div id="towerAlly"><div id="allyTowerHp"></div></div>
-            <div id="towerEnemy"><div id="enemyTowerHp"></div></div>
+            <div id="towerAlly"></div>
+            <div class="positionHpAlly">
+                <div class="borderHp" id="allyTowerHp"></div>
+            </div>
+            <div id="towerEnemy"></div>
+            <div class="positionHpEnemy">
+                <div class="borderHp" id="enemyTowerHp"></div>
+            </div>
         </div>
     </section>
 
