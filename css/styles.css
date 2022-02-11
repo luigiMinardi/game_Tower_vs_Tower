@@ -18,27 +18,36 @@ p {
 .canvas1, .canvas2, .canvas3 {
     height: 100vh;
     width: 100vw;
+
+    background-position: center;
+    background-size: cover;
+
     display: flex;
     align-items: center;
 }
 
-.canvas1 {
-    background-color: black;
+.canvas1, .canvas3 {
     justify-content: center;
+
+    color: white;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black, 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.canvas1 {
+    background-image: url(../assets/img/background.jpg);
 }
 
 .canvas2 {    
-    background-image: url(../assets/img/background.jpg);
-    background-position: center;
-    background-size: cover;
-
+    background-image: url(../assets/img/background_2.jpg);
+    
     flex-direction: column;
     justify-content: space-between;
 }
 
 .canvas3 {
-    background-color: brown;
-    justify-content: center;
+    background-image: url(../assets/img/background_3.jpg);
 }
 
 /* "Navbar" and buttons */
@@ -80,12 +89,12 @@ p {
 }
 
 .buttons button {
-    border: .1em solid black;
+    border: .1rem solid black;
     padding: 0;
     margin: 0;
-    margin-left: 1.2em;
+    margin-left: 1.2rem;
 
-    width: 4em;
+    width: 4rem;
 
     overflow: visible;
 
@@ -94,6 +103,7 @@ p {
     color: black;
 
     font: inherit;
+    font-size: small;
     text-align: center;
 
     line-height: normal;
@@ -110,12 +120,16 @@ p {
     transform: scale(.95);
 }
 
-#spawn {
-    width: 3em;
-    height: 3em;
+#spawn, .mana {
+    width: 3rem;
+    height: 3rem;
     background-position: center;
     background-repeat: no-repeat;
+}
 
+.mana {
+    background-image: url(../assets/img/mana_generator.png);
+    background-size: cover;
 }
 
 /* Towers */
